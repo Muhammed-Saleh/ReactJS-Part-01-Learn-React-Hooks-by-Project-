@@ -25,10 +25,17 @@ const App = () => {
             },
     
         ]);
+
+    const deleteHandler = (e, clickedIdx) => {
+        const deleteOperation = state.filter((el, idx) => idx !== clickedIdx ) 
+        setState(deleteOperation);
+        console.log(state);
+    };  
+
     return ( 
         <div className={styles.mainContainer}>
             <h2>Boys Data</h2>
-            <Card namesList={state}  type="men"/>
+            <Card namesList={state}  type="men" deleteFunc = {deleteHandler} />
         </div>
     );    
 };
