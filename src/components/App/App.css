@@ -5,3 +5,11 @@
     justify-content: center;
     width: 90%;
 }
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

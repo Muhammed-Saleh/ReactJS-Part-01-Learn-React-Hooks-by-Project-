@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import Card from '../Card/Card';
-import styles from './App.module.css';
+import './App.css';
 
 const App = () => {
+    const [cardToggle, setCardToggle] = useState(false);
     const [state, setState] = useState(
         [
             { 
@@ -32,19 +33,27 @@ const App = () => {
             return prevState.filter((el, idx) => idx !== clickedIdx);
         })
 
-        console.log("inside", state);
-
         // const deleteOperation = state.filter((el, idx) => idx !== clickedIdx ) 
         // setState(deleteOperation);
         // console.log(state);
     };  
-        console.log("outSide", state);
 
+    // const toggleHundler = () => {
+    //     setCardToggle(!cardToggle)
+    //     console.log('clicked'); 
+    // }
 
     return ( 
-        <div className={styles.mainContainer}>
+        <div className="mainContainer">
             <h2>Boys Data</h2>
-            <Card namesList={state}  type="men" deleteFunc = {deleteHandler} />
+            <button 
+            style = {{marginBottom: "20px"}}
+            onClick={() => setCardToggle(!cardToggle)}>
+                {cardToggle ? "Hide Cards" : "Show Cards"}
+            </button>
+            <div className={cardToggle ? "show" : "hide"}>
+                <Card namesList={state}  type="men" deleteFunc = {deleteHandler} />
+            </div>
         </div>
     );    
 };
