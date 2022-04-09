@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Card from '../Card/Card';
+import Filter from '../filter/Filter';
 import './App.css';
 
 const App = () => {
-    const inputEl = useRef(null);
     const [cardToggle, setCardToggle] = useState(true);
     const [state, setState] = useState(
         [
@@ -44,14 +44,6 @@ const App = () => {
     //     console.log('clicked'); 
     // }
 
-    const testHandeler = () => {
-        console.log(inputEl.current.value);
-    }
-
-    const blurHandeler = () => {
-        inputEl.current.focus();
-    }
-
     return ( 
         <div className="mainContainer">
             <h2>Boys Data</h2>
@@ -61,10 +53,7 @@ const App = () => {
                 {cardToggle ? "Hide Cards" : "Show Cards"}
             </button>
             <div className={cardToggle ? "show" : "hide"}>
-                <div style = {{marginBottom:"20px"}}>
-                    <input type="text" placeholder='for ref test' ref={inputEl} onChange={testHandeler}></input>
-                    <button onClick={blurHandeler}>Click me</button>
-                </div>
+                <Filter />
                 <Card namesList={state}  type="men" deleteFunc = {deleteHandler} />
             </div>
         </div>
