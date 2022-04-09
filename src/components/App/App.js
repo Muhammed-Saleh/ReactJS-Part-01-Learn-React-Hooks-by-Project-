@@ -27,10 +27,19 @@ const App = () => {
         ]);
 
     const deleteHandler = (e, clickedIdx) => {
-        const deleteOperation = state.filter((el, idx) => idx !== clickedIdx ) 
-        setState(deleteOperation);
-        console.log(state);
+
+        setState((prevState) => {
+            return prevState.filter((el, idx) => idx !== clickedIdx);
+        })
+
+        console.log("inside", state);
+
+        // const deleteOperation = state.filter((el, idx) => idx !== clickedIdx ) 
+        // setState(deleteOperation);
+        // console.log(state);
     };  
+        console.log("outSide", state);
+
 
     return ( 
         <div className={styles.mainContainer}>
