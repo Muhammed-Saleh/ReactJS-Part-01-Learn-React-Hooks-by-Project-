@@ -44,6 +44,10 @@ const App = () => {
     //     console.log('clicked'); 
     // }
 
+    const filterNames = (name) => {
+        console.log(name);
+    }
+
     return ( 
         <div className="mainContainer">
             <h2>Boys Data</h2>
@@ -53,7 +57,7 @@ const App = () => {
                 {cardToggle ? "Hide Cards" : "Show Cards"}
             </button>
             <div className={cardToggle ? "show" : "hide"}>
-                <Filter />
+                <Filter filteration = {filterNames} />
                 <Card namesList={state}  type="men" deleteFunc = {deleteHandler} />
             </div>
         </div>

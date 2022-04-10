@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import styles from "./Filter.module.css";
 
-const Filter = () => {
+const Filter = ({filteration}) => {
     const [filter, setStateFilter] = useState("");
     const filterHandler = (e) => {
         const name = e.target.value
         setStateFilter(name);
-        if( filter.length > 5 )
-            alert();
-        console.log(filter);
+        filteration(name);
     }
     return (
         <div className = {styles.mp}>
