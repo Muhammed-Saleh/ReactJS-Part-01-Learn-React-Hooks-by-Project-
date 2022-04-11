@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Filter.module.css";
 
 const Filter = ({filteration}) => {
-    const [filter, setStateFilter] = useState("");
+    const [filterState, setStateFilter] = useState("");
     const filterHandler = (e) => {
         const name = e.target.value
         setStateFilter(name);
@@ -10,7 +10,7 @@ const Filter = ({filteration}) => {
     }
     return (
         <div className = {styles.mp}>
-            <input type="text" placeholder='filter by name' value = {filter} onChange = {filterHandler}/>
+            <input type="text" placeholder='filter by name' value = {filterState} onChange = {filterHandler}/>
         </div>
     );
 }

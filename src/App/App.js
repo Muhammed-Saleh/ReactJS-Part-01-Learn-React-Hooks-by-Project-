@@ -1,37 +1,55 @@
 import React, { useState } from 'react'
-import Card from '../Card/Card';
-import Filter from '../filter/Filter';
+import CardList from '../components/CardList/Card.list';
+import Filter from '../components/filter/Filter';
 import './App.css';
 
 const App = () => {
     const [cardToggle, setCardToggle] = useState(true);
+    const [filter, setFilter] = useState("");
     const [state, setState] = useState(
         [
             { 
+                id: 1,
                 name: "Muhammad",
                 age: 33,
                 address: "Alraml Bakoos",
                 Phone: "02222222222",
+                type: "boy"
             },
-            { 
+            {
+                id: 2,
+                name: "farah",
+                age: 23,
+                address: "Alraml Bakoos",
+                Phone:"0256655555",
+                type: "girl"
+
+            },
+            {
+                id: 3,
                 name: "Ahmed",
                 age: 63,
                 address: "Alraml Bakoos",
                 Phone:"0256655555",
+                type: "boy"
+
             },
-            { 
-                name: "Hema",
+            {
+                id: 4,
+                name: "Mariam",
                 age: 30,
                 address: "Alraml Bakoos",
                 phone:"0296666666",
+                type: "girl"
             },
     
         ]);
 
-    const deleteHandler = (e, clickedIdx) => {
+    const deleteHandler = (e, clickedId) => {
 
         setState((prevState) => {
-            return prevState.filter((el, idx) => idx !== clickedIdx);
+            
+            return prevState.filter((el, idx) => el.id !== clickedId);
         })
 
         // const deleteOperation = state.filter((el, idx) => idx !== clickedIdx ) 
@@ -46,6 +64,14 @@ const App = () => {
 
     const filterNames = (name) => {
         console.log(name);
+        setFilter(name);
+    }
+
+    const namesHandlers = () => {
+        if(filter.length !== 0){
+            return state.filter((el) => el.name.includes(filter));
+        }
+        return state;
     }
 
     return ( 
@@ -58,7 +84,7 @@ const App = () => {
             </button>
             <div className={cardToggle ? "show" : "hide"}>
                 <Filter filteration = {filterNames} />
-                <Card namesList={state}  type="men" deleteFunc = {deleteHandler} />
+                <CardList namesList={namesHandlers()} deleteFunc = {deleteHandler} />
             </div>
         </div>
     );    
