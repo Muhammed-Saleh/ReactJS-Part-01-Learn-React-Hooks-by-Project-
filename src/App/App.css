@@ -1,15 +1,30 @@
-.mainContainer {
+.button {
+    background-color: #4caf50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+  
+  .mainContainer {
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    width: 90%;
-}
-
-.show {
+  }
+  
+  .deleteBtn {
+    background-color: black !important;
+  }
+  
+  .show {
     display: block;
-}
-
-.hide {
+  }
+  
+  .hide {
     display: none;
-}
+  }
