@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CardList from '../components/CardList/Card.list';
 import Filter from '../components/filter/Filter';
+import Button from '../components/Layout/Button';
 import Modal from '../components/Modal/Modal';
 import './App.css';
 
@@ -78,16 +79,18 @@ const App = () => {
 
     return ( 
         <div className="mainContainer">
-            <Modal show={showModal}/>
+            <Modal show={showModal} closeModal={() => setShowModal(false)}/>
             <h2>List of Data</h2>
             <div style={{display:"flex", marginBottom: "10px"}}> 
-                <button 
-                style = {{marginRight: "20px"}}
-                onClick={() => setCardToggle(!cardToggle)}
-                className="button"
-                >
-                    {cardToggle ? "Hide Cards" : "Show Cards"}
-                </button>
+            <Button onClick= {() => setCardToggle(!cardToggle)}>
+                {cardToggle ? "Hide Cards" : "Show Cards"}
+            </Button>
+                {//<button 
+                // style = {{marginRight: "20px"}}
+                // className="button"
+                // >
+                // </button>
+                }
                 <button className="button" onClick={() => setShowModal(true)}>New Record</button>
             </div>
             <div className={cardToggle ? "show" : "hide"}>
