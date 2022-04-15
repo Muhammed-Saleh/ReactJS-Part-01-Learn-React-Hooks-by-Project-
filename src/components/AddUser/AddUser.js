@@ -5,7 +5,7 @@ import Button from "../Layout/Button";
 
 
 
-const AddUser = ({addNewUserHandler}) => {
+const AddUser = ({addNewUserHandler, closeModal}) => {
     const [input, setInput] = useState({
         name: '',
         age: '',
@@ -109,7 +109,7 @@ return (
             />
         </Form.Controller>
         <div style= {{marginTop : '20px'}}>
-            <Button type='submit'style= {{marginRight : '20px'}}>Save</Button>
+            <Button type='submit'style= {{marginRight : '20px'}} onClick={closeModal}>Save</Button>
             <Button type='reset'>Reset</Button>
         </div>
     </form>

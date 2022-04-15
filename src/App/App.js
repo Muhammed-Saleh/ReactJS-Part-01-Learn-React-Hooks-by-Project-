@@ -13,7 +13,7 @@ const App = () => {
     const [state, setState] = useState(
         [
             { 
-                id: 1,
+                id: 1000,
                 name: "Muhammad",
                 age: 33,
                 address: "Alraml Bakoos",
@@ -21,7 +21,7 @@ const App = () => {
                 type: "boy"
             },
             {
-                id: 2,
+                id: 2000,
                 name: "farah",
                 age: 23,
                 address: "Alraml Bakoos",
@@ -30,7 +30,7 @@ const App = () => {
 
             },
             {
-                id: 3,
+                id: 3000,
                 name: "Ahmed",
                 age: 63,
                 address: "Alraml Bakoos",
@@ -39,7 +39,7 @@ const App = () => {
 
             },
             {
-                id: 4,
+                id: 4000,
                 name: "Mariam",
                 age: 30,
                 address: "Alraml Bakoos",
@@ -51,8 +51,8 @@ const App = () => {
 
 
     const addNewUserHandler = (data) => {
-        console.log(data);
-    }    
+        setState((prevState) => (setState([...prevState, data ])));
+    };    
 
     const deleteHandler = (e, clickedId) => {
 
@@ -102,7 +102,10 @@ const App = () => {
                 </div>
             </div>
             <Modal show={showModal} closeModal={() => setShowModal(false)}>
-                <AddUser addNewUserHandler = {addNewUserHandler}/>
+                <AddUser 
+                addNewUserHandler = {addNewUserHandler} 
+                closeModal={() => setShowModal(false)}
+                />
             </Modal>
         </Fragment>
     );    
