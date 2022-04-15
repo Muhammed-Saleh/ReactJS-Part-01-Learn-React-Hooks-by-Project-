@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import CardList from '../components/CardList/Card.list';
-import Filter from '../components/filter/Filter';
+import FilterInput from '../components/FilterInput/FilterInput';
 import Button from '../components/Layout/Button';
 import Modal from '../components/Modal/Modal';
+import AddUser from '../components/AddUser/AddUser';
 import './App.css';
 
 const App = () => {
@@ -16,7 +17,7 @@ const App = () => {
                 name: "Muhammad",
                 age: 33,
                 address: "Alraml Bakoos",
-                Phone: "02222222222",
+                phone: "02222222222",
                 type: "boy"
             },
             {
@@ -24,7 +25,7 @@ const App = () => {
                 name: "farah",
                 age: 23,
                 address: "Alraml Bakoos",
-                Phone:"0256655555",
+                phone:"0256655555",
                 type: "girl"
 
             },
@@ -33,7 +34,7 @@ const App = () => {
                 name: "Ahmed",
                 age: 63,
                 address: "Alraml Bakoos",
-                Phone:"0256655555",
+                phone:"0256655555",
                 type: "boy"
 
             },
@@ -47,6 +48,11 @@ const App = () => {
             },
     
         ]);
+
+
+    const addNewUserHandler = (data) => {
+        console.log(data);
+    }    
 
     const deleteHandler = (e, clickedId) => {
 
@@ -78,26 +84,27 @@ const App = () => {
     }
 
     return ( 
-        <div className="mainContainer">
-            <Modal show={showModal} closeModal={() => setShowModal(false)}/>
-            <h2>List of Data</h2>
-            <div style={{display:"flex", marginBottom: "10px"}}> 
-            <Button onClick= {() => setCardToggle(!cardToggle)}>
-                {cardToggle ? "Hide Cards" : "Show Cards"}
-            </Button>
-                {//<button 
-                // style = {{marginRight: "20px"}}
-                // className="button"
-                // >
-                // </button>
-                }
-                <button className="button" onClick={() => setShowModal(true)}>New Record</button>
+        <Fragment>
+            <div className="mainContainer">
+                <h2>List of Data</h2>
+                <div style={{display:"flex", marginBottom: "10px"}}> 
+                <Button 
+                onClick= {() => setCardToggle(!cardToggle)}
+                style = {{marginRight: "20px"}}
+                >
+                    {cardToggle ? "Hide Cards" : "Show Cards"}
+                </Button>
+                    <Button className="button" onClick={() => setShowModal(true)}>New Record</Button>
+                </div>
+                <div className={cardToggle ? "show" : "hide"}>
+                    <FilterInput filteration = {filterNames} />
+                    <CardList namesList={namesHandlers()} deleteFunc = {deleteHandler} />
+                </div>
             </div>
-            <div className={cardToggle ? "show" : "hide"}>
-                <Filter filteration = {filterNames} />
-                <CardList namesList={namesHandlers()} deleteFunc = {deleteHandler} />
-            </div>
-        </div>
+            <Modal show={showModal} closeModal={() => setShowModal(false)}>
+                <AddUser addNewUserHandler = {addNewUserHandler}/>
+            </Modal>
+        </Fragment>
     );    
 };
 

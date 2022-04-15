@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Filter.module.css";
+import styles from "./FilterInput.module.css";
 
 const Filter = ({filteration}) => {
     const [filterState, setStateFilter] = useState("");
@@ -10,7 +10,12 @@ const Filter = ({filteration}) => {
     }
     return (
         <div className = {styles.mp}>
-            <input type="text" placeholder='filter by name' value = {filterState} onChange = {filterHandler}/>
+            <input 
+            type="text" 
+            placeholder='filter by name' 
+            value = {filterState} 
+            onChange = {filterHandler}
+            />
         </div>
     );
 }
